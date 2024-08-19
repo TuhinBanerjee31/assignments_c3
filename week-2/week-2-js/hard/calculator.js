@@ -16,6 +16,49 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+class Calculator {
+  Constructor(){
+    this.result= undefined
+  }
+
+  add(n){
+    if(this.result == undefined) this.result = 0
+    this.result += n
+  }
+
+  subtract(n){
+    if(this.result == undefined) this.result = 0
+    this.result -= n
+  }
+
+  multiply(n){
+    if(this.result == undefined) this.result = 1
+    this.result *= n
+  }
+
+  divide(n){
+    if(n == 0) throw new Error()
+    if(this.result == undefined) this.result = 0
+    this.result /= n
+  }
+
+  clear(){
+    this.result= 0
+  }
+
+  getResult(){
+    return this.result
+  }
+
+  calculate(str){
+    try {
+      str= str.replace(/\s+/g, '');
+      this.result = new Function(`return ${str};`)();
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+}
 
 module.exports = Calculator;
