@@ -4,6 +4,11 @@
 */
 
 function isPalindrome(str) {
+  let temp= str.toLowerCase().split('')
+  for(let i=0; i<temp.length-1; i++){
+    if (temp[i] != temp[temp.length-i]) return false
+  }
+
   return true;
 }
 
